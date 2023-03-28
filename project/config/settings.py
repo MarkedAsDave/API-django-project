@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
-    'corsheaders',
+    'corsheaders', 
+    'accounts',
+
 ]
 
 MIDDLEWARE = [
@@ -139,7 +141,11 @@ EMAIL_PORT = '2525'
 DJOSER = {
     'SEND_ACTIVATION_EMAIL' : True,
     'SEND_CONFIRM_EMAIL' : True,
-    'ACTIVATION_URL' : 'activation/{uid}/{token}'
+    'ACTIVATION_URL' : 'activation/{uid}/{token}',
+    'LOGIN_FIELD' : 'email',
+    'SERIALIZERS': {
+         'user_create' : "accounts.serializers.CustomUserCreateSerializer",
+    }
 }
 
 REST_FRAMEWORK = {
